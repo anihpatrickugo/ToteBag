@@ -1,56 +1,50 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { StyleSheet, View, TextInput, Image } from 'react-native';
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import * as UI from '@/components/common/index';
+import ProductList from '@/components/main/ProductList';
+import { FontAwesome, Feather } from '@expo/vector-icons';
+import { Items } from '@/constants/Items';
+
+
 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <UI.ContainnerView>
+
+      {/* header */}
+      <View style={styles.header}>
+        <Feather name="menu" size={30} color="black" />
+        <Image source={require('@/assets/images/user.png')}/>
+      </View>
+
+      {/* title */}
+      <UI.ThemedView style={styles.titleContainer}>
+        <UI.ThemedText bold size="2xl">What would you like
+        to order</UI.ThemedText>
+      </UI.ThemedView>
+
+      {/* search bar */}
+     <View style={styles.searchBar}>
+        <FontAwesome name="search" size={35} color="#767F9D" />
+        <TextInput style={styles.searchInput} placeholder='Find for food or restaurant...'/>
+     </View>
+ 
+      {/* products */}
+      <ProductList items={Items}/>
+
+    </UI.ContainnerView>
   );
 }
 
 const styles = StyleSheet.create({
+
+  header: {
+    width: "100%", 
+    flexDirection: "row", 
+    justifyContent: "space-between", 
+    alignItems: "center"
+  },
+
   titleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -60,11 +54,24 @@ const styles = StyleSheet.create({
     gap: 8,
     marginBottom: 8,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
+  searchBar: {
+    flexDirection: "row", 
+    justifyContent: "space-between", 
+    alignItems: "center", 
+    backgroundColor: "#EFEFEF",
+    height: 60,
+    width: "100%",
+    marginHorizontal: 20,
+    paddingHorizontal: 20,
+    gap: 8,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: "#767F9D"
+},
+
+searchInput: { 
+    flex: 1,
+     height: "100%",
+     fontSize: 18,
+    }
 });

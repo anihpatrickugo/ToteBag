@@ -1,6 +1,11 @@
-# Welcome to your Expo app 👋
+# Welcome to your FoodApp 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+![splash](./assets/images/splash.png)
+![icon](./assets/images/icon.png)
+
+Click [Here](https://expo.dev/artifacts/eas/4rLSU1pUxEiLrDAmYqDQpW.apk) To download for android only
+
+This is an [HNG internsip Program](https://hng.tech/internship) by [HNG](https://hng.tech/premium) created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
 ## Get started
 
