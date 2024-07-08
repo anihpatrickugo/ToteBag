@@ -1,17 +1,17 @@
 import React, { FC } from 'react'
-import { ScrollView, ScrollViewProps, StyleSheet } from 'react-native'
+import { View, ViewProps, StyleSheet } from 'react-native'
 
 
-export type ContainnerViewProps = ScrollViewProps & {
+export type ContainnerViewProps = ViewProps & {
     children: React.ReactNode
 
   };
 
 const ContainnerView: FC<ContainnerViewProps> = ({children}) => {
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <View style={styles.container}>
       {children}
-    </ScrollView>
+    </View>
   )
 }
 

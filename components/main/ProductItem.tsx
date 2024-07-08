@@ -1,9 +1,10 @@
 import React from 'react'
-import { View, StyleSheet, Image } from 'react-native'
+import { View, Pressable, StyleSheet, Image } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons';
 import * as UI from '@/components/common/index'
 import { Colors } from '@/constants/Colors';
 import { ACTIONS, useCart } from "@/contexts/CartContext";
+import { Link, useNavigation, router } from 'expo-router';
 
 const ProductItem = ({item}: {item: any}) => {
 
@@ -13,14 +14,15 @@ const ProductItem = ({item}: {item: any}) => {
 
 
   return (
-    <View style={styles.containner}>
+   
+    <Pressable onPress={()=> router.navigate({pathname: "/[products]", params: {item}})} style={styles.containner}>
        <Image style={styles.image} source={{uri: item.image}}  />     
          <UI.ThemedText size='lg' bold>{item.name}</UI.ThemedText>
 
          <View style={styles.details}>
             <View  style={styles.detailItem}>
-              <MaterialIcons name="delivery-dining" size={24} color={Colors.light.icon} />
-              <UI.ThemedText size="xs">Free Delivery</UI.ThemedText>
+              <MaterialIcons name="money" size={24} color={Colors.light.icon} />
+              <UI.ThemedText size="xs" bold>NGN {item.price}</UI.ThemedText>
             </View>
 
             <View style={styles.detailItem}>
@@ -63,15 +65,16 @@ const ProductItem = ({item}: {item: any}) => {
          </View>
 
 
-   </View>  
+   </Pressable>  
+   
   )
 }
 
 const styles = StyleSheet.create({
     containner: {
-        gap: 8,
         justifyContent: "space-between",
-        marginRight: 20
+        marginRight: 20,
+        gap: 8
     },
 
     image: {

@@ -19,7 +19,7 @@ const ProductList = ({items}: {items: ItemProp[]}) => {
      {/* list  */}
      <FlatList
        data={items}
-       contentContainerStyle={{justifyContent: "space-between",}}
+       contentContainerStyle={{justifyContent: "space-between", gap: 12}}
        renderItem={({item, index}) => (<ProductItem item={item} key={index}/>)}
        keyExtractor={(item) => item.id.toString()}
        horizontal

@@ -34,7 +34,7 @@ export default function TabLayout() {
           title: 'My Orders',
           tabBarIcon: ({ color, focused }) => (
             <View>
-              <UI.ThemedText size='xs' color="#fff"style={styles.counter}>{products.length}</UI.ThemedText>
+              {products.length > 0  && <UI.ThemedText size='xs' color="#fff"style={styles.counter}>{products.length}</UI.ThemedText>}
               <FontAwesome5 name="shopping-cart" size={24} color={color} /> 
             </View>
           ),

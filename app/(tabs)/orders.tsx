@@ -17,6 +17,7 @@ export default function TabTwoScreen() {
       prevValue + currentValue.price * currentValue.quantity,
     0
   );
+  
 
   return (
     <UI.ContainnerView>
