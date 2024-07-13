@@ -1,7 +1,7 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { Colors } from '@/constants/Colors';
+import { Colors, primaryColor } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { View, StyleSheet } from 'react-native';
 import * as UI from "@/components/common"
@@ -15,7 +15,7 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: primaryColor,
         headerShown: false,
       }}>
       <Tabs.Screen
@@ -29,7 +29,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="orders"
+        name="(order)"
         options={{
           title: 'My Orders',
           tabBarIcon: ({ color, focused }) => (

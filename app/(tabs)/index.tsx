@@ -16,18 +16,6 @@ export default function HomeScreen() {
         <Feather name="menu" size={30} color="black" />
         <Image source={require('@/assets/images/user.png')}/>
       </View>
-
-      {/* title */}
-      <UI.ThemedView style={styles.titleContainer}>
-        <UI.ThemedText bold size="2xl">What would you like
-        to order</UI.ThemedText>
-      </UI.ThemedView>
-
-      {/* search bar */}
-     <View style={styles.searchBar}>
-        <FontAwesome name="search" size={35} color="#767F9D" />
-        <TextInput style={styles.searchInput} placeholder='Find for food or restaurant...'/>
-     </View>
  
       {/* products */}
       <ProductList items={Items}/>

@@ -31,8 +31,6 @@ export default function RootLayout() {
       <CartContextProvider>
         <Stack>
            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-           <Stack.Screen name="success" options={{ headerShown: false }} />
-           <Stack.Screen name="[product]" options={{ headerShown: false }} />
        </Stack>
       </CartContextProvider>
     </ThemeProvider>

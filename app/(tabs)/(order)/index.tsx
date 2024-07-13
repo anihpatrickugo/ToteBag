@@ -1,10 +1,11 @@
 import { TouchableOpacity, View } from 'react-native';
 import { StyleSheet, Image, Platform, ScrollView } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, AntDesign } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import * as UI from '@/components/common/index';
 import CartList from '@/components/main/CartList';
 import { ACTIONS, useCart } from "@/contexts/CartContext";
+import { greyColor, primaryColor } from '@/constants/Colors';
 
 
 
@@ -25,7 +26,8 @@ export default function TabTwoScreen() {
       {/* header */}
       <View style={styles.header}>
          <Ionicons name="chevron-back-sharp" size={24} color="black" />
-         <UI.ThemedText size="lg" style={{width: "55%"}}>Cart</UI.ThemedText>
+         <UI.ThemedText size="md" >Shopping Cart</UI.ThemedText>
+         <AntDesign name="message1" size={24} color="black" />
       </View>
 
 
@@ -37,21 +39,17 @@ export default function TabTwoScreen() {
             
 
             <View style={styles.summaryRow}>
-               <UI.ThemedText size='md' bold>Delivery</UI.ThemedText>
-               <UI.ThemedText size='sm' bold>$7</UI.ThemedText>
+               <UI.ThemedText size='sm' bold color={greyColor}>Cart Total</UI.ThemedText>
+               <UI.ThemedText size='lg' bold color={primaryColor}>$$10,700.00</UI.ThemedText>
             </View>
 
             <View style={styles.summaryRow}>
-               <UI.ThemedText size='md' bold>Total</UI.ThemedText>
-               <UI.ThemedText size='sm' bold>{`$${totalPrice+7}`}</UI.ThemedText>
+               <UI.Button text='Checkout' variant='coloured' onPress={()=> router.navigate('/shipping')}/>
             </View>
 
         </View>
 
-        {/* checkout */}
-        <TouchableOpacity style={{width: "65%"}}>
-            <UI.Button variant='coloured' text='Checkout' onPress={() => router.push('/success')}/>
-        </TouchableOpacity>
+    
       
 
     </UI.ContainnerView>
@@ -70,14 +68,17 @@ const styles = StyleSheet.create({
     marginVertical: 16,
     flex: 1,
     width: "100%",
-    height: 200,
-    gap: 8
+    flexDirection: "row",
+    position: "absolute",
+    bottom: 0,
+   
+    // gap: 8
 },
 
  summaryRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center"
+  
+    alignItems: "center",
+    width: "50%",
 }
 
  

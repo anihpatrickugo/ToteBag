@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { Text, TouchableOpacity, StyleSheet, TouchableOpacityProps } from 'react-native'
-import { primaryColor, grayColor } from '../variables'
+import { primaryColor } from '@/constants/Colors'
 import { Colors } from '@/constants/Colors'
 
 interface Props extends TouchableOpacityProps {
@@ -17,7 +17,7 @@ const Button: FC<Props> = ({text, variant, noBorder, style, ...props}) => {
    switch (variant){
 
     case "coloured":
-        variantStyles = {button: {backgroundColor: Colors.light.tint},  buttonText: {color: "white" }}
+        variantStyles = {button: {backgroundColor: primaryColor},  buttonText: {color: "white" }}
         break;
 
     case "light":
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     button: {
         width: "100%",
         paddingVertical: 12,
-        borderRadius: 20,
+        borderRadius: 4,
       },
     
       buttonText: {
