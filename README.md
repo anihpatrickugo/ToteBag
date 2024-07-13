@@ -1,4 +1,4 @@
-# Welcome to your FoodApp 👋
+# Welcome to your ToteBag 👋
 
 ![splash](./assets/images/splash.png)
 ![icon](./assets/images/icon.png)

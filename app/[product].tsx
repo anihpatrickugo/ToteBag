@@ -1,4 +1,4 @@
-import {StyleSheet, View, Pressable } from 'react-native';
+import {StyleSheet, View, Image, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useNavigation, useRouter } from 'expo-router';
 import * as UI from '@/components/common/index';
@@ -9,8 +9,7 @@ import * as UI from '@/components/common/index';
 export default function ProductDetailScreen() {
 
     const router =  useRouter()
-    const {item} = useLocalSearchParams()
-   console.log(item.name)
+    const {name, price, image} = useLocalSearchParams()
   
 
   return (
@@ -19,9 +18,22 @@ export default function ProductDetailScreen() {
       {/* header */}
       <Pressable style={styles.header} onPress={()=>router.back()}>
          <Ionicons name="chevron-back-sharp" size={24} color="black" />
-         <UI.ThemedText size="lg" style={{width: "55%"}}>{item.name}</UI.ThemedText>
+         <UI.ThemedText size="lg" style={{width: "55%"}}>Details</UI.ThemedText>
       </Pressable>
+         
+       <View style={{width: "90%", height: 250, marginVertical: 20}}>
+         <Image style={{width: "100%", height: "100%", borderRadius: 16}} source={{uri: image}}/>
+       </View>
 
+
+       <View style={{width: "90%", height: 250, marginVertical: 20}}>
+         <UI.ThemedText size='lg' bold>{name}</UI.ThemedText>
+         <UI.ThemedText size='md' bold>NGN {price}</UI.ThemedText>
+         
+         <UI.Button variant='coloured' text='Add To Cart'/>
+       </View>
+      
+   
 
 
     </UI.ContainnerView>

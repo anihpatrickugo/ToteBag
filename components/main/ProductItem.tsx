@@ -15,7 +15,7 @@ const ProductItem = ({item}: {item: any}) => {
 
   return (
    
-    <Pressable onPress={()=> router.navigate({pathname: "/[products]", params: {item}})} style={styles.containner}>
+    <Pressable onPress={()=> router.navigate({pathname: "/[products]", params: {name: item.name, price: item.price, image: item.image}})} style={styles.containner}>
        <Image style={styles.image} source={{uri: item.image}}  />     
          <UI.ThemedText size='lg' bold>{item.name}</UI.ThemedText>
 
