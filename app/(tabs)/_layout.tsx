@@ -31,7 +31,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="(order)"
         options={{
-          title: 'My Orders',
+          title: 'Cart',
           tabBarIcon: ({ color, focused }) => (
             <View>
               {products.length > 0  && <UI.ThemedText size='xs' color="#fff"style={styles.counter}>{products.length}</UI.ThemedText>}

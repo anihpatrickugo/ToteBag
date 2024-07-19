@@ -8,6 +8,7 @@ export const ACTIONS = {
   ADD_QUANTITY: "ADD_QUANTITY",
   REMOVE_QUANTITY: "REMOVE_QUANTITY",
   EDIT_QUANTITY: "EDIT_QUANTITY",
+  EMPTY_CART: "EMPTY_CART",
 };
 
 const reducer = (state, action) => {
@@ -45,6 +46,9 @@ const reducer = (state, action) => {
           ? { ...product, quantity: action.value }
           : product
       );
+
+    case ACTIONS.EMPTY_CART:
+      return (state = []);
 
     default:
       return state;

@@ -5,11 +5,56 @@ import { greyColor, lightGreyColor, primaryColor } from '@/constants/Colors'
 import { Ionicons, MaterialCommunityIcons, Octicons, SimpleLineIcons } from '@expo/vector-icons';
 import ConfirmOrderModal from '@/components/main/confirmOrderModal';
 import { router } from 'expo-router';
-
-// const {width, height} = Dimensions.get.
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useCart, ACTIONS } from '@/contexts/CartContext';
 
 const success = () => {
     const [modalVisible, setModalVisible] = React.useState(false)
+
+
+    const { products, dispatch } = useCart();
+
+  const totalPrice = products.reduce(
+    (prevValue, currentValue) =>
+      prevValue + currentValue.price * currentValue.quantity,
+    0
+  );
+ 
+
+  const confirmOrder = async() => {
+   
+
+    try {
+      const data = await  AsyncStorage.getItem("orders")
+      
+      const newOrder =  {
+        id: Math.floor(Math.random() * 100),
+        price: totalPrice,
+        date: new Date().toDateString(),
+        time: new Date().toTimeString(),
+        products: products
+      }
+    
+      if (data){
+        const list = JSON.parse(data)
+        const a = [...list, newOrder]
+        await AsyncStorage.setItem("orders", JSON.stringify(a))
+        // await AsyncStorage.removeItem("orders")
+
+        }
+        else{
+          await AsyncStorage.setItem("orders", JSON.stringify([newOrder]))
+        }
+      }
+      catch(error: any){
+        console.log(error)
+      }
+      finally{
+        setModalVisible(true)
+      }
+    }
+
+  
   return (
     <UI.ContainnerView>
 
@@ -111,7 +156,7 @@ const success = () => {
 
        {/* button */}
        <View style={{width: "100%", position: "absolute", bottom: 12}}>
-            <UI.Button text='Place Order' variant='coloured' onPress={()=>setModalVisible(true)}/>
+            <UI.Button text='Place Order' variant='coloured' onPress={confirmOrder}/>
         </View>
 
 

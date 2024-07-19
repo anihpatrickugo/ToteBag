@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "ToteBag",
-    "slug": "ToteBag",
+    "slug": "FoodApp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -20,7 +20,7 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.anihpatrickugo.ToteBag"
+      "package": "com.anihpatrickugo.FoodApp"
     },
     "web": {
       "bundler": "metro",

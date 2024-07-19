@@ -1,4 +1,4 @@
-import { TouchableOpacity, View } from 'react-native';
+import { Pressable, TouchableOpacity, View } from 'react-native';
 import { StyleSheet, Image, Platform, ScrollView } from 'react-native';
 import { Ionicons, AntDesign } from '@expo/vector-icons';
 import { router } from 'expo-router';
@@ -6,18 +6,33 @@ import * as UI from '@/components/common/index';
 import CartList from '@/components/main/CartList';
 import { ACTIONS, useCart } from "@/contexts/CartContext";
 import { greyColor, primaryColor } from '@/constants/Colors';
+import { useEffect, useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import OrdersList from '@/components/main/OrdersList';
 
 
 
-export default function TabTwoScreen() {
 
-  const { products, dispatch } = useCart();
+export default function OrdersScreen() {
+ 
+    const [orders, setOrders] = useState([])
 
-  const totalPrice = products.reduce(
-    (prevValue, currentValue) =>
-      prevValue + currentValue.price * currentValue.quantity,
-    0
-  );
+    useEffect(()=>{
+        const getOrders = async ()=>{
+            const orders = await AsyncStorage.getItem("orders")
+            if (orders){
+                const ordersList = JSON.parse(orders)
+                setOrders(ordersList)
+            }
+            else{ 
+                console.log("Nothing")
+            }
+        }
+
+        getOrders()
+    }, [])
+
+
   
 
   return (
@@ -25,32 +40,20 @@ export default function TabTwoScreen() {
 
       {/* header */}
       <View style={styles.header}>
+        <Pressable onPress={()=>router.replace("/")}>
          <Ionicons name="chevron-back-sharp" size={24} color="black" />
-         <UI.ThemedText size="md" >Shopping Cart</UI.ThemedText>
+        </Pressable>
+         <UI.ThemedText size="md" >Orders</UI.ThemedText>
          <AntDesign name="message1" size={24} color="black" />
       </View>
 
 
-      {/* cartList */}
-      <CartList items={products}/>
+      {/* ordersList */}
+      <OrdersList items={orders.reverse()}/>
 
-       {/* order summmary */}
-       <View style={styles.summary}>
-            
-
-            <View style={styles.summaryRow}>
-               <UI.ThemedText size='sm' bold color={greyColor}>Cart Total</UI.ThemedText>
-               <UI.ThemedText size='lg' bold color={primaryColor}>${totalPrice}</UI.ThemedText>
-            </View>
-
-            <View style={styles.summaryRow}>
-               <UI.Button text='Checkout' variant='coloured' onPress={()=> router.navigate('/shipping')}/>
-            </View>
-
-        </View>
+       
 
     
-      
 
     </UI.ContainnerView>
   );

@@ -3,9 +3,21 @@ import {Alert, Modal, StyleSheet, View} from 'react-native';
 import ConfirmOrder from "@/assets/icons/ConfirmOrder"
 import * as UI from '../common'
 import { greyColor } from '@/constants/Colors';
+import { router } from 'expo-router';
+import { ACTIONS, useCart } from '@/contexts/CartContext';
 
-const  ConfirmOrderModal = ({modalVisible, setModalVisible, navigation}) => {
- 
+
+const  ConfirmOrderModal = ({modalVisible, setModalVisible}) => {
+
+  const { dispatch } = useCart();
+
+  const dismissModal = () => {
+    setModalVisible(false)
+    dispatch({type: ACTIONS.EMPTY_CART})
+    router.dismissAll()
+  }
+
+  
 
 
 
@@ -35,7 +47,7 @@ const  ConfirmOrderModal = ({modalVisible, setModalVisible, navigation}) => {
 
             {/* buttons */}
             <View style={{marginBottom: 6, width: "100%"}}>
-               <UI.Button text='Confirm' variant='coloured' onPress={()=>setModalVisible(!modalVisible)}/>
+               <UI.Button text='Dismiss' variant='coloured' onPress={dismissModal}/>
             </View>
 
           </View>
