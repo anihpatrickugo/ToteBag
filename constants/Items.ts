@@ -47,7 +47,7 @@ export const Items: ItemProp[] = [
      id: 'FO189913P',
      name: 'Totoro leaf soup',
      price: 1500,
-     image: require("@/assets/images/products/bag6.png")
+     image: require("@/assets/images/products/bag6.jpeg")
     },
 
     {
