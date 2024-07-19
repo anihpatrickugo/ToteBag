@@ -19,6 +19,21 @@ export default function TabTwoScreen() {
     0
   );
   
+  
+ if (products.length === 0){
+  return (
+      <UI.ContainnerView>
+        {/* header */}
+      <View style={styles.header}>
+         <Ionicons name="chevron-back-sharp" size={24} color="black" />
+         <UI.ThemedText size="md" >Shopping Cart</UI.ThemedText>
+         <AntDesign name="message1" size={24} color="black" />
+      </View>
+
+          <UI.ThemedText bold style={{marginVertical:  200}} color={greyColor} size="lg">No Item in cart</UI.ThemedText>
+      </UI.ContainnerView>
+  )
+}
 
   return (
     <UI.ContainnerView>

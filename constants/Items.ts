@@ -93,14 +93,14 @@ export const Items: ItemProp[] = [
        },
    
        {
-        id: 'FO189916P',
+        id: 'FO187916P',
         name: 'Silver Junkok Tote Bag',
         price: 1500,
         image: require("@/assets/images/products/bag13.jpeg")
        },
    
        {
-        id: 'FO189913P',
+        id: 'FO184913P',
         name: 'Career Tote Bag',
         price: 1500,
         image: require("@/assets/images/products/bag14.jpeg")
@@ -128,10 +128,10 @@ export const Items: ItemProp[] = [
        },
    
        {
-        id: 'FO189882P',
+        id: 'FO189802P',
         name: 'Old Bounty  Tote Bag',
         price: 1500,
-        image: require("@/assets/images/products/bag81.jpeg")
+        image: require("@/assets/images/products/bag18.jpeg")
        },
    
        {

@@ -7,10 +7,13 @@ import 'react-native-reanimated';
 import CartContextProvider from '@/contexts/CartContext'
 import { useColorScheme } from '@/hooks/useColorScheme';
 
+
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+
+
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
@@ -25,6 +28,9 @@ export default function RootLayout() {
   if (!loaded) {
     return null;
   }
+
+
+  
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>

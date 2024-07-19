@@ -1,14 +1,12 @@
-import { Pressable, TouchableOpacity, View } from 'react-native';
-import { StyleSheet, Image, Platform, ScrollView } from 'react-native';
+import { Pressable, View } from 'react-native';
+import { StyleSheet, } from 'react-native';
 import { Ionicons, AntDesign } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import * as UI from '@/components/common/index';
-import CartList from '@/components/main/CartList';
-import { ACTIONS, useCart } from "@/contexts/CartContext";
-import { greyColor, primaryColor } from '@/constants/Colors';
 import { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import OrdersList from '@/components/main/OrdersList';
+import { greyColor } from '@/constants/Colors';
 
 
 
@@ -32,7 +30,21 @@ export default function OrdersScreen() {
         getOrders()
     }, [])
 
-
+ if (orders.length === 0){
+    return (
+        <UI.ContainnerView>
+            {/* header */}
+      <View style={styles.header}>
+        <Pressable onPress={()=>router.replace("/")}>
+         <Ionicons name="chevron-back-sharp" size={24} color="black" />
+        </Pressable>
+         <UI.ThemedText size="md" >Orders</UI.ThemedText>
+         <AntDesign name="message1" size={24} color="black" />
+      </View>
+            <UI.ThemedText bold style={{marginVertical:  200}} color={greyColor} size="lg">No Orders</UI.ThemedText>
+        </UI.ContainnerView>
+    )
+ }
   
 
   return (

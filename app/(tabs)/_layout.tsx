@@ -1,16 +1,29 @@
 import { Tabs } from 'expo-router';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Colors, primaryColor } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import * as UI from "@/components/common"
 import { ACTIONS, useCart } from "@/contexts/CartContext";
 
 export default function TabLayout() {
+  const [loading, setLoading] = React.useState(true);
   const colorScheme = useColorScheme();
 
   const {products} = useCart()
+
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+
+
+  if (loading) {
+    return <ActivityIndicator color={primaryColor} size='large' style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} />;
+  }
 
   return (
     <Tabs

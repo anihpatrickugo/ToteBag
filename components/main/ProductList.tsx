@@ -15,6 +15,7 @@ const ProductList = ({items}: {items: ItemProp[]}) => {
      {/* list  */}
      <FlatList
        data={items}
+       style={{width: "100%", height: "100%"}}
        contentContainerStyle={{justifyContent: "space-between", gap: 12}}
        renderItem={({item, index}) => (<ProductItem item={item} key={index}/>)}
        keyExtractor={(item) => item.id.toString()}
@@ -29,9 +30,9 @@ const ProductList = ({items}: {items: ItemProp[]}) => {
 const styles = StyleSheet.create({
     stepContainer: {
         width: "100%",
-        marginVertical: 8,
+        marginTop: 8,
         gap: 16,
-        marginBottom: 8,
+        flex: 1
     },
     
     title: {

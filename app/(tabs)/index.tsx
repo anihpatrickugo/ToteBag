@@ -5,33 +5,34 @@ import ProductList from '@/components/main/ProductList';
 import { Feather } from '@expo/vector-icons';
 import { Items } from '@/constants/Items';
 import { router } from 'expo-router';
-import { useEffect } from 'react';
 
-const  url = 'https://api.timbu.cloud/products?organization_id=839d5ee98cf74b6083ba0b8c4ebbc9e6&reverse_sort=false&page=1&size=25&Appid=XFYR9SHT5EK6AMM&Apikey=ea4b1a47f0274910bd93b479a15c441120240707192707403385/'
-const url2 = 'https://jsonplaceholder.typicode.com/todos/1'
+// const  url = 'https://api.timbu.cloud/products?organization_id=839d5ee98cf74b6083ba0b8c4ebbc9e6&reverse_sort=false&page=1&size=25&Appid=XFYR9SHT5EK6AMM&Apikey=ea4b1a47f0274910bd93b479a15c441120240707192707403385'
+// const url2 = 'https://jsonplaceholder.typicode.com/todos/1'
 
 
 
 export default function HomeScreen() {
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(url2, {
-          headers: {
-            'Content-Type': 'application/json'
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch(url2, {
+  //         headers: {
+  //           'Content-Type': 'application/json'
             
-          },
-        })
-        const data = await response.json()
-        console.log(data)
-      } catch (error) {
-        console.log(error)
-      }
-    }
+  //         },
+  //       })
+  //       const data = await response.json()
+  //       console.log(data)
+  //     } catch (error) {
+  //       console.log(error)
+  //     }
+  //   }
 
-    fetchData()
-  }, [])
+  //   fetchData()
+  // }, [])
+
+
   return (
     <UI.ContainnerView>
 

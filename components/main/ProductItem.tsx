@@ -18,9 +18,9 @@ const ProductItem = ({item}: {item: any}) => {
        <View style={{flexDirection: "row", gap: 12}} >
             <Image  style={styles.image} source={item.image}/>
 
-            <View>
+            <View style={{justifyContent: "space-around"}}>
                <UI.ThemedText bold size='sm'>{item.name}</UI.ThemedText>
-               <UI.ThemedText color={greyColor} size='sm'>off-white | M</UI.ThemedText>
+               {/* <UI.ThemedText color={greyColor} size='sm'>off-white | M</UI.ThemedText> */}
                <UI.ThemedText bold color={primaryColor} size='sm'>${item.price}</UI.ThemedText>
             </View>
 
